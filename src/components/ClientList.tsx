@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useActiveClients } from "../hooks/useActiveClients";
 import { ErrorMessage } from "./ErrorMessage";
 import type { Client } from "../types/clients";
-import { ClientInfo } from "./ClientInfo";
+import { ClientInfoComp } from "./ClientInfo";
 
 
 
@@ -15,19 +15,19 @@ export function ClientList() {
 
     return (
         <>
-        <div>
-            <h1>Register Clients</h1>
-            <ul>
-                {clients.map(c => (
-                    <li key={c.id} onClick={() => setSelectedClient(c)}>
-                        {c.id} - {c.name} - {c.description} </li>
-                ))}
-            </ul>
-        </div>
-                { selectedClient && (
-                    <ClientInfo clientId={selectedClient.id}
-                    onClose={() => setSelectedClient(null)}></ClientInfo>
-                )}
+            <div>
+                <h1>Register Clients</h1>
+                <ul>
+                    {clients.map(c => (
+                        <li key={c.id} onClick={() => setSelectedClient(c)}>
+                            {c.id} - {c.name} - {c.description} </li>
+                    ))}
+                </ul>
+            </div>
+            {selectedClient && (
+                <ClientInfoComp clientId={selectedClient.id}
+                    onClose={() => setSelectedClient(null)}></ClientInfoComp>
+            )}
 
         </>
     );

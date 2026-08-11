@@ -22,8 +22,9 @@ export async function getClientInfoById(id: string, signal?: AbortSignal): Promi
     return res.json();
 }
 
-export async function getClientConnections(id: string, signal?: AbortSignal): Promise<Connection> {
-    const res = await fetch(`${ORCHESTRATOR_URL}/client/client-to-client?id=${id}`, {signal});
+
+export async function getOpenStreamsClientsInfo(signal?: AbortSignal): Promise<ClientInfo[]> {
+    const res = await fetch(`${ORCHESTRATOR_URL}/client/open-streams/info`, {signal});
     if (!res.ok) throw new Error(`Error ${res.status}`);
     return res.json();
 }

@@ -2,8 +2,8 @@ import type { Client } from "./clients";
 import type { Connection } from "./connections";
 
 
-export interface ClientInfo{
+export interface ClientInfo {
     client: Client;
-    hasOpenStream: string;
+    hasOpenStream: boolean;
     connections: Connection
 }

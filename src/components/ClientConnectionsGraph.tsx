@@ -13,7 +13,6 @@ interface GraphLink {
     target: string;
 }
 
-const withSizeHOC = withSize({monitorWidth: true, monitorHeight: false, noPlaceholder:true})
 
 export function ClientConnectionsGraph({ info }: { info: ClientInfo }) {
     const graphData = {
@@ -29,7 +28,9 @@ export function ClientConnectionsGraph({ info }: { info: ClientInfo }) {
             target: conn.toId.toString(),
         })),
     };
-    
+    console.log(graphData)
+    console.log(graphData.links.length)
+
     return (
         <ForceGraph2D
             graphData={graphData}
@@ -38,7 +39,7 @@ export function ClientConnectionsGraph({ info }: { info: ClientInfo }) {
             nodeAutoColorBy="id"
             linkDirectionalArrowLength={5}
             height={400}
-            nodeRelSize={5}
+            nodeRelSize={8}
             nodeCanvasObjectMode={node => 'after'}
             nodeCanvasObject={(node, ctx) => {
                 ctx.fillText(node.name, node.x!, node.y!);

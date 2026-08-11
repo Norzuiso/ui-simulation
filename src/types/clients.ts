@@ -1,7 +1,7 @@
 
 export interface Client {
-  id: number;
+  id: string;
   name: string;
-  seed: number;
+  seed: string;
   description: string;
 }

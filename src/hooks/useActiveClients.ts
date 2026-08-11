@@ -1,12 +1,12 @@
 import type { Client } from '../types/clients'
 import { useEffect, useState } from "react";
-import {getAllActiveClients} from "../api/clientService.ts";
+import { getAllActiveClients } from "../api/clientService.ts";
 
 
 export function useActiveClients() {
-    const [clients, setClients] = useState<Client[]>([])
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const [clients, setClients] = useState<Client[]>([])
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
 
 
@@ -20,13 +20,13 @@ export function useActiveClients() {
         setClients(data);
       } catch (e: any) {
         if (e.name !== 'AbortError') setError(e.message);
-      }finally {
+      } finally {
         setLoading(false);
       }
     }
     load();
     return () => controller.abort();
   }, []);
-  
+
   return { clients, loading, error };
 }
