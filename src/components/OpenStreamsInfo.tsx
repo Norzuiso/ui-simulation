@@ -19,7 +19,7 @@ export function OpenStreamsClientsInfo() {
                             {client.client.id}
                         </span>
                     ))}
-                    <ClientOpenStreamsConnectionsGraph info={openStreamsInfo}></ClientOpenStreamsConnectionsGraph>
+                    <ClientOpenStreamsConnectionsGraph info={openStreamsInfo} />
                 </>
                 : <p>No open connections detected</p>}
         </>

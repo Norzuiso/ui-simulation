@@ -11,5 +11,5 @@ export interface Connections {
 
 export interface AnyValue {
     '@type': string;
-    [key: string]: unknown;
+    [key: string]: any;
 }

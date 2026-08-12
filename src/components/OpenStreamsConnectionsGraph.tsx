@@ -1,26 +1,19 @@
 import type { ClientInfo } from "../types/clientInfo";
 import { useEffect, useRef, useState } from "react";
-import { forceCenter, forceCollide, forceLink } from "d3-force";
+import { forceCollide } from "d3-force";
 import ForceGraph2D, { type ForceGraphMethods } from 'react-force-graph-2d';
 import { ClientInfoComp } from "./ClientInfo";
-
-interface GraphNode {
-    id: string;
-    name: string;
-    seed: string;
-    isActive: boolean;
-}
 
 interface GraphLink {
     source: string;
     target: string;
+    label: string;
 }
 
 
-export function ClientOpenStreamsConnectionsGraph({ info }: { info: ClientInfo[] }) {
-    var linksFormated: GraphLink[] = []
+export function ClientOpenStreamsConnectionsGraph({ info: infoList }: { info: ClientInfo[] }) {
     const nodes = [
-        ...info.map((c, i, arr) => {
+        ...infoList.map((c, i, arr) => {
             const angle = (i / arr.length) * 2 * Math.PI;
             const radius = 150;
             return {
@@ -32,21 +25,25 @@ export function ClientOpenStreamsConnectionsGraph({ info }: { info: ClientInfo[]
             }
         }),
     ]
-    info.forEach(c => (
+    var linksFormated: GraphLink[] = []
+    infoList.forEach(c => (
         c.connections?.connections?.map(conn => {
             const hasNode = nodes.some(node => node.id == conn.toId)
             if (!hasNode) {
-                nodes.push({
+
+                const clientInfo = {
                     id: conn.toId,
                     name: conn.toId,
                     fx: 0,
                     fy: 0,
                     isActive: false
-                })
+                }
+                nodes.push(clientInfo)
             }
             linksFormated.push({
                 source: c.client.id,
                 target: conn.toId,
+                label: conn.attributes.influence.value.toString()
             });
         })
     ))
@@ -179,6 +176,21 @@ export function ClientOpenStreamsConnectionsGraph({ info }: { info: ClientInfo[]
                     ctx.closePath();
                     ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'
                     ctx.fill();
+
+                    const label = link.label;
+                    const fontSize = 10;
+                    ctx.font = `${fontSize}px Sans-Serif`;
+
+                    const textLenght = ctx.measureText(label).width;
+                    const textAngle = Math.PI / 7;
+                    var xText = endX - textLenght * Math.cos(angle - textAngle);
+                    var yText = endY - textLenght * Math.sin(angle - textAngle);
+
+
+                    ctx.fillText(label,
+                        xText,
+                        yText);
+
                 }}
             ></ForceGraph2D>
 
