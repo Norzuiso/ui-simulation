@@ -1,5 +1,5 @@
 import ForceGraph2D from "react-force-graph-2d";
-import type { ClientInfo } from "../types/clientInfo";
+import type { ClientInfo } from "../../types/clientInfo";
 import { withSize } from 'react-sizeme'
 
 interface GraphNode {
@@ -27,7 +27,7 @@ export function ClientConnectionsGraph({ info }: { info: ClientInfo }) {
             target: conn.toId.toString(),
         })),
     };
-    
+
     return (
         <ForceGraph2D
             graphData={graphData}

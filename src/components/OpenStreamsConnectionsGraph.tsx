@@ -2,7 +2,7 @@ import type { ClientInfo } from "../types/clientInfo";
 import { useEffect, useRef, useState } from "react";
 import { forceCollide } from "d3-force";
 import ForceGraph2D, { type ForceGraphMethods } from 'react-force-graph-2d';
-import { ClientInfoComp } from "./ClientInfo";
+import { ClientInfoComp } from "./clients/ClientInfo";
 
 interface GraphLink {
     source: string;

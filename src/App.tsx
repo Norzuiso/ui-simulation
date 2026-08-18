@@ -1,18 +1,26 @@
-
-import './App.css'
-import { OpenStreamsClientsInfo } from './components/OpenStreamsInfo'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { LogsPage } from './pages/LogsPage';
+import { ClientsPage } from './pages/ClientsPage';
+import './App.css';
 
 function App() {
-
   return (
-    <div>
-      <h1>Open Streams</h1>
-      <OpenStreamsClientsInfo />
-    </div>
-  )
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Logs</Link>
+        {' | '}
+        <Link to="/clients">Connected clients</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<LogsPage />} />
+        <Route path="/clients" element={<ClientsPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
 
 /**
  * 

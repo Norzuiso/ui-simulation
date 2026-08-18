@@ -1,6 +1,6 @@
-import type { Client } from '../types/clients'
 import { useEffect, useState } from "react";
-import { getAllActiveClients } from "../api/clientService.ts";
+import type { Client } from "../../types/clients";
+import { getAllActiveClients } from "../../api/clientService";
 
 
 export function useActiveClients() {

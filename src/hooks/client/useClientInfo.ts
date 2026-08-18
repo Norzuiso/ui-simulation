@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
-import { getClientInfoById } from '../api/clientService'
-import type { ClientInfo } from '../types/clientInfo'
+import { getClientInfoById } from '../../api/clientService';
+import type { ClientInfo } from '../../types/clientInfo';
 
 
-export function useClientInfo(id: string){
+export function useClientInfo(id: string) {
     const [info, setInfo] = useState<ClientInfo>();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(()=>{
+    useEffect(() => {
         if (!id) return;
 
         const controller = new AbortController();
@@ -20,7 +20,7 @@ export function useClientInfo(id: string){
                 setInfo(data);
             } catch (e: any) {
                 if (e.name !== 'AbortError') setError(e.message);
-            } finally{
+            } finally {
                 setLoading(false);
             }
         }
@@ -28,6 +28,6 @@ export function useClientInfo(id: string){
         return () => controller.abort();
     }, [id]);
 
-    return {info, loading, error}
+    return { info, loading, error }
 
 }

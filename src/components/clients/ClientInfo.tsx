@@ -1,8 +1,6 @@
-import { useActiveClients } from "../hooks/useActiveClients";
-import { useClientInfo } from "../hooks/useClientInfo";
-import { ErrorMessage } from "./ErrorMessage";
-import type { ClientInfo } from "../types/clientInfo";
-import { ClientConnectionsGraph } from "../components/ClientConnectionsGraph"
+import { ErrorMessage } from "../ErrorMessage";
+import { ClientConnectionsGraph } from "./ClientConnectionsGraph"
+import { useClientInfo } from "../../hooks/client/useClientInfo";
 
 interface ClientInfoProps {
     clientId: string;

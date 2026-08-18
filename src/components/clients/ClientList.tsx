@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useActiveClients } from "../hooks/useActiveClients";
-import { ErrorMessage } from "./ErrorMessage";
-import type { Client } from "../types/clients";
+import { ErrorMessage } from "../ErrorMessage";
+import type { Client } from "../../types/clients";
 import { ClientInfoComp } from "./ClientInfo";
+import { useActiveClients } from "../../hooks/client/useActiveClients";
 
 
 
