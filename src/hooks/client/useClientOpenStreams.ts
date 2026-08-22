@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllOpenStreams } from "../api/clientService";
+import { getAllOpenStreams } from "../../api/clientService";
 
 
 export function useOpenStreams() {
@@ -26,6 +26,6 @@ export function useOpenStreams() {
         return () => controller.abort();
     }, []);
 
-    return {openStreams, loading, error }
+    return { openStreams, loading, error }
 
 }
