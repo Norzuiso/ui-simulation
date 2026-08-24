@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { LogsPage } from './pages/LogsPage';
 import { ClientsPage } from './pages/ClientsPage';
 import './App.css';
+import { StartSimulation } from './components/simulation/StartSimulation';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
         {' | '}
         <Link to="/clients">Connected clients</Link>
       </nav>
-
+      <StartSimulation />
       <Routes>
         <Route path="/" element={<LogsPage />} />
         <Route path="/clients" element={<ClientsPage />} />
