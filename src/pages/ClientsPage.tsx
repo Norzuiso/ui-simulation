@@ -1,9 +1,9 @@
-import { ConnectedClients } from '../components/clients/StreamClientOpenStreamsViewer';
+import { ClientOpenStreams } from '../components/clients/ClientOpenStreams';
 
 export function ClientsPage() {
     return (
         <div className="">
-            <ConnectedClients />
+            <ClientOpenStreams />
         </div>
     );
 }

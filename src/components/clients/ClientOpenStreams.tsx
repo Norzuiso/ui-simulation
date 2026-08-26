@@ -1,11 +1,11 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useStreamClientOpenStremas } from "../../hooks/client/useStreamClientOpenStremas";
-import { ClientOpenStreamsConnectionsGraph } from "../OpenStreamsConnectionsGraph";
+import { ClientOpenStreamsConnectionsGraph } from "./ClientOpenStreamsConnectionsGraph";
 import { ClientInfoComp } from "./ClientInfo";
 import { useContainerSize } from "../../hooks/useContainerSize";
 import type { ClientInfo } from "../../types/clientInfo";
 
-export function ConnectedClients() {
+export function ClientOpenStreams() {
     const { clientsInfo, connected, clearClientsInfo } = useStreamClientOpenStremas('http://127.0.0.1:8090/client/open-streams/stream');
     clientsInfo.sort((a, b) => Number(a.client.id) - Number(b.client.id))
 

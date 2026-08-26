@@ -1,8 +1,5 @@
-import { ErrorMessage } from "../ErrorMessage";
-import { ClientConnectionsGraph } from "./ClientConnectionsGraph"
-import { useClientInfo } from "../../hooks/client/useClientInfo";
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from "@headlessui/react";
-import { ClientOpenStreamsConnectionsGraph } from "../OpenStreamsConnectionsGraph";
+import { ClientOpenStreamsConnectionsGraph } from "./ClientOpenStreamsConnectionsGraph";
 import { useContainerSize } from "../../hooks/useContainerSize";
 import type { ClientInfo } from "../../types/clientInfo";
 
