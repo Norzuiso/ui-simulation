@@ -1,44 +1,39 @@
 import { useState } from 'react'
+import type { StartSimulationRequest } from '../../types/startSimulation';
 
 
 export function StartSimulation() {
 
-    const [initEpoch, setInitEpoch] = useState<string>();
-    const [endEpoch, setEndEpoch] = useState<string>();
-    const [seed, setSeed] = useState<string>();
-    const [stepsMode, setStepsMode] = useState<string>();
+    const [inputs, setInputs] = useState<StartSimulationRequest>({ init_epoch: 0, end_epoch: 0, seed: 0, steps_mode: false })
+
+    const handleChange = (e: { target: any; }) => {
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        setInputs((values: any) => ({ ...values, [name]: value }))
+    }
 
     //    const [clientsInfo, setClientsInfo] = useState<ClientInfo[]>([]);
-    function handleSubmit(e: { preventDefault: () => void; target: any; }) {
-        // Prevent the browser from reloading the page
-        e.preventDefault();
-
-        // Read the form data
-        const form = e.target;
-        const formData = new FormData(form);
-
-        // You can pass formData as a fetch body directly:
-        //fetch('/some-api', { method: form.method, body: formData });
-
-        // Or you can work with it as a plain object:
-        const formJson = Object.fromEntries(formData.entries());
-        console.log(formJson);
+    const handleSubmit = (event: { preventDefault: () => void; }) => {
+        console.log(inputs);
+        event.preventDefault();
     }
 
     return (
         <>
             <form method="post" onSubmit={handleSubmit}>
                 <label>
-                    Text input: <input name="initEpoch" defaultValue="0" type='number' />
+                    Init epoch: <input name="init_epoch" type='number' value={inputs?.init_epoch} onChange={handleChange} />
                 </label>
                 <label>
-                    Text input: <input name="endEpoch" defaultValue="0" type='number' />
+                    End epoch: <input name="end_epoch" type='number' value={inputs?.end_epoch} onChange={handleChange} required={true} min={Number(inputs.init_epoch) + 1} />
                 </label>
                 <label>
-                    Text input: <input name="seed" defaultValue="0" type='number' />
+                    General seed: <input name="seed" type='number' value={inputs?.seed} onChange={handleChange} required={true} />
                 </label>
                 <label>
-                    Text input: <input name="stepsMode" defaultValue="0" type='checkbox' />
+                    Step mode: <input name="steps_mode" type='checkbox' checked={inputs?.steps_mode} onChange={handleChange} />
                 </label>
                 <button type="reset">Reset form</button>
                 <button type="submit">Submit form</button>
