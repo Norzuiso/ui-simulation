@@ -1,10 +1,9 @@
-import { OpenStreamsClientsInfo } from '../components/OpenStreamsInfo';
+import { ClientOpenStreams } from '../components/clients/ClientOpenStreams';
 
 export function ClientsPage() {
     return (
-        <div>
-            <h1>Connected clients</h1>
-            <OpenStreamsClientsInfo />
+        <div className="">
+            <ClientOpenStreams />
         </div>
     );
 }

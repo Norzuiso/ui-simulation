@@ -2,21 +2,31 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { LogsPage } from './pages/LogsPage';
 import { ClientsPage } from './pages/ClientsPage';
 import './App.css';
+import { StartSimulation } from './components/simulation/StartSimulation';
 
 function App() {
   return (
-    <BrowserRouter>
-      <nav>
-        <Link to="/">Logs</Link>
-        {' | '}
-        <Link to="/clients">Connected clients</Link>
-      </nav>
+    <div className="min-h-screen bg-gray-50">
+      <BrowserRouter>
+        <nav className='w-full bg-white shadow-sm'>
+          <div className='max-w-7xl mx-auto py-4'>
 
-      <Routes>
-        <Route path="/" element={<LogsPage />} />
-        <Route path="/clients" element={<ClientsPage />} />
-      </Routes>
-    </BrowserRouter>
+            <Link to="/">Logs</Link>
+            {' | '}
+            <Link to="/clients">Connected clients</Link>
+            {' | '}
+            <Link to="/start">Start simulation</Link>
+          </div>
+        </nav>
+        <main className="max-w-7xl mx-auto py-4">
+          <Routes>
+            <Route path='/start' element={<StartSimulation />} />
+            <Route path="/" element={<LogsPage />} />
+            <Route path="/clients" element={<ClientsPage />} />
+          </Routes>
+        </main>
+      </BrowserRouter>
+    </div>
   );
 }
 

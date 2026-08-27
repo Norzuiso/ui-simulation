@@ -10,13 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.10",
+    "@tailwindcss/vite": "^4.3.3",
     "d3": "^7.9.0",
     "d3-force": "^3.0.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-force-graph-2d": "^1.29.1",
     "react-router-dom": "^7.18.2",
-    "react-sizeme": "^3.0.2"
+    "react-sizeme": "^3.0.2",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@types/d3-force": "^3.0.10",
